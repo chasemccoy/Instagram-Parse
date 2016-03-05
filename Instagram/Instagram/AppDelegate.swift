@@ -9,6 +9,8 @@
 import UIKit
 import Parse
 
+let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -27,6 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configuration.server = "https://afternoon-ravine-61444.herokuapp.com/parse"
       })
     )
+    
+    // check if user is logged in.
+    if PFUser.currentUser() != nil {
+      let vc = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
+      window?.rootViewController = vc
+    }
     
     return true
   }
