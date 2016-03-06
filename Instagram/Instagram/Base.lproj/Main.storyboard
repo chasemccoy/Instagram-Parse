@@ -8,7 +8,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -239,7 +239,13 @@
                             <constraint firstItem="cGj-8g-33Y" firstAttribute="leading" secondItem="Xb1-Fb-d1P" secondAttribute="leading" id="xqW-H1-aVu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="6VP-ug-i9L"/>
+                    <navigationItem key="navigationItem" title="Home" id="6VP-ug-i9L">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="C1B-6u-VXK">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="tn8-sb-M4O" id="7QA-kr-5F0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="cGj-8g-33Y" id="KU2-sx-CQm"/>
                     </connections>

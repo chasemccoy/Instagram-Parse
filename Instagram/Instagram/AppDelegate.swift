@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: "userDidLogout", object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogin", name: "userDidLogin", object: nil)
     
     // Initialize Parse
     // Set applicationId and server based on the values in the Heroku settings.
@@ -32,11 +34,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // check if user is logged in.
     if PFUser.currentUser() != nil {
-      let vc = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
-      window?.rootViewController = vc
+      userDidLogin()
     }
     
     return true
+  }
+  
+  func userDidLogin() {
+    let vc = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
+    window?.rootViewController = vc
+  }
+  
+  func userDidLogout() {
+    PFUser.logOut()
+    let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+    window?.rootViewController = vc
   }
 
   func applicationWillResignActive(application: UIApplication) {

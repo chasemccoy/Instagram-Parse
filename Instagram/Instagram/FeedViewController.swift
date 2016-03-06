@@ -41,6 +41,10 @@ class FeedViewController: UIViewController, UITableViewDataSource {
     }
   }
   
+  @IBAction func logoutButtonPressed(sender: AnyObject) {
+    NSNotificationCenter.defaultCenter().postNotificationName("userDidLogout", object: nil)
+  }
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let posts = posts {
       return posts.count
